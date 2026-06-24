@@ -32,6 +32,9 @@ $menu = selectAllCategoryMenu($dbConnect); // model
 /**
  * homepage
  */
+// on charge les articles pour la homepage
+// ICI
+$articles = selectAllArticleHomepage($dbConnect);
 include_once BASE_URL."/view/homepage.view.html.php"; // view
 
 //var_dump($dbConnect);
