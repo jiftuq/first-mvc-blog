@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * Notre routeur
+ */
+
+/**
+ * On va se connecter notre db via PDO
+ */
+try {
+    $dbconnect = new PDO(
+        dsn: DB_DSN, 
+        username: DB_LOGIN, 
+        password: DB_PWD,
+        options: [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, // pour afficher les erreurs SQL
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC, // pour récupérer les résultats sous forme de tableaux associatifs
+        ]
+    );
+} catch (Exception $e) {
+    echo $e->getMessage();
+} 
+
+var_dump($dbconnect); // pour vérifier que la connexion est bien établie

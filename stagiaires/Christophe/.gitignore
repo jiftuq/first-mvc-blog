@@ -1,0 +1,4 @@
+# dossier data
+/data
+#données sensibles(copie de config.example.php)
+config.php
