@@ -34,6 +34,37 @@ function selectAllArticleHomepage(PDO $db): array
     return $datas;
 }
 
+/**
+ * Récupération d'un article par son id
+ * 
+ */
+
+function selectDetailArticle(PDO $db, int $id): ?array 
+{
+    # 
+    $sql="SELECT 
+	a.`id`, a.`title`,a.`date`, a.`content` ,
+    u.`id` AS `iduser`, u.`username`,
+	GROUP_CONCAT(c.`id`) AS `idcateg`, GROUP_CONCAT(c.`title` SEPARATOR '|||') AS `titlecateg`
+	FROM `article` a
+    INNER JOIN `user` u
+		ON u.`id` = a.`user_id`
+    LEFT JOIN `category_has_article` cha
+    	ON cha.`article_id`= a.`id` 
+    LEFT JOIN `category` c ON cha.`category_id`= c.`id` 
+    WHERE a.`id` = ?
+	GROUP BY a.`id` 
+	   
+;";
+    $stmt = $db->prepare($sql);
+    $stmt->execute([$id]);
+    if($stmt->rowCount()===0) return null;
+    $data = $stmt->fetch();
+    $stmt->closeCursor();
+    return $data;
+}
+
+
 # on coupe les phrase trop longues dans couper dans les mots
 function cutTheString(string $text, int $length = 200): string
 {
