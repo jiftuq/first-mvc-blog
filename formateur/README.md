@@ -12,4 +12,8 @@ Base de donnée : data\first-with-datas.sql
         email : michael.pitz@cf2m.be
         password : admin123   
 
+        username : Pierre
+        email : pierre.sandron@cf2m.be
+        password : 123admin  
+
 Nous sommes dans stagiaires\michael\model\ArticleModel.php
