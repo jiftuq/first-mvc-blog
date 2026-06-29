@@ -21,19 +21,35 @@
         <div class="container">
             <div class="text-center mt-5">
                 <h1>Le blog de Pitz Michaël</h1>
-                <p class="lead">du blabla</p>
-                <p>Bootstrap v5.2.3</p>
+                <p class="lead">Mon blog</p>
+                <?php
+            foreach($articles as $item):
+                ?>
+            <article>
+                        <!-- Post header-->
+                        <header class="mb-4">
+                            <!-- Post title-->
+                            <h3 class="fw-bolder mb-1"><a href="?idarticle=<?=$item['id'] ?>"><?=$item['title'] ?></a></h3>
+                            <!-- Post meta content-->
+                            <div class="text-muted fst-italic mb-2"> Ecrit par <a href="?iduser=<?=$item['iduser'] ?>"><?=$item['username'] ?></a> le <?=$item['date'] ?></div>
+                            <!-- Post categories-->
+                            <a class="badge bg-secondary text-decoration-none link-light" href="#!">categ</a>
+                            <a class="badge bg-secondary text-decoration-none link-light" href="#!">categ2</a>
+                        </header>
+
+                        <!-- Post content-->
+                        <section class="mb-5">
+                            <p class="fs-5 mb-4"><?=$item['content'] ?></p>
+                        </section>
+                    </article>
+                    <?php
+                    endforeach;
+                    ?>
                 <?php
             var_dump($_GET, $menu,$articles);
                 ?>
             </div>
-            <div class="row g-4 py-5 row-cols-1 row-cols-lg-3"> <div class="feature col"> <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3"> <svg class="bi" width="1em" height="1em" aria-hidden="true"><use xlink:href="#collection"></use></svg> </div> <h3 class="fs-2 text-body-emphasis">Featured title</h3> <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p> <a href="#" class="icon-link">
-Call to action
-<svg class="bi" aria-hidden="true"><use xlink:href="#chevron-right"></use></svg> </a> </div> <div class="feature col"> <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3"> <svg class="bi" width="1em" height="1em" aria-hidden="true"><use xlink:href="#people-circle"></use></svg> </div> <h3 class="fs-2 text-body-emphasis">Featured title</h3> <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p> <a href="#" class="icon-link">
-Call to action
-<svg class="bi" aria-hidden="true"><use xlink:href="#chevron-right"></use></svg> </a> </div> <div class="feature col"> <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3"> <svg class="bi" width="1em" height="1em" aria-hidden="true"><use xlink:href="#toggles2"></use></svg> </div> <h3 class="fs-2 text-body-emphasis">Featured title</h3> <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p> <a href="#" class="icon-link">
-Call to action
-<svg class="bi" aria-hidden="true"><use xlink:href="#chevron-right"></use></svg> </a> </div> </div>
+            
         </div>
         <!-- Bootstrap core JS-->
         <script src="js/bootstrap.bundle.min.js"></script>
