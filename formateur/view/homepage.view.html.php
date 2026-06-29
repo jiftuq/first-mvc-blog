@@ -23,6 +23,26 @@
                 <h1>Le blog de Pitz Michaël</h1>
                 <p class="lead">Mon blog</p>
                 <?php
+             if(empty($articles)) :
+                ?>
+                <article>
+                        <!-- Post header-->
+                        <header class="mb-4">
+                            Pas encore d'article
+                        </header>
+                </article>        
+                <?php
+                else:
+                $countArticle = count($articles)   ;
+                $pluriel = ($countArticle>1) ? "s" : "";
+                ?>
+                <article>
+                        <!-- Post header-->
+                        <header class="mb-4">
+                            Vous avez <?= $countArticle ?> article<?= $pluriel ?>
+                        </header>
+                </article> 
+                <?php
             foreach($articles as $item):
                 ?>
             <article>
@@ -33,8 +53,18 @@
                             <!-- Post meta content-->
                             <div class="text-muted fst-italic mb-2"> Ecrit par <a href="?iduser=<?=$item['iduser'] ?>"><?=$item['username'] ?></a> le <?=$item['date'] ?></div>
                             <!-- Post categories-->
+                             <?php
+                             if(empty($item['idcateg'])):
+                             ?>
+                            <a class="badge bg-secondary text-decoration-none link-light" href="#!">Pas encore de catégories</a>
+                             <?php
+                             else:   
+                             ?>
                             <a class="badge bg-secondary text-decoration-none link-light" href="#!">categ</a>
                             <a class="badge bg-secondary text-decoration-none link-light" href="#!">categ2</a>
+                            <?php
+                            endif;
+                            ?>
                         </header>
 
                         <!-- Post content-->
@@ -44,6 +74,7 @@
                     </article>
                     <?php
                     endforeach;
+                endif;
                     ?>
                 <?php
             var_dump($_GET, $menu,$articles);
