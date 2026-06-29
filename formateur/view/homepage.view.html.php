@@ -58,18 +58,23 @@
                              ?>
                             <a class="badge bg-secondary text-decoration-none link-light" href="#!">Pas encore de catégories</a>
                              <?php
-                             else:   
+                             else:
+                                $idcateg = explode(",",$item['idcateg']);
+                                $tiltecateg = explode("|||",$item['titlecateg']);
+                                $countid = count($idcateg);
+                                for($i=0;$i<$countid;$i++):
                              ?>
-                            <a class="badge bg-secondary text-decoration-none link-light" href="#!">categ</a>
-                            <a class="badge bg-secondary text-decoration-none link-light" href="#!">categ2</a>
+                            <a class="badge bg-secondary text-decoration-none link-light" href="?idcateg=<?= $idcateg[$i] ?>"><?= $tiltecateg[$i] ?></a>
+
                             <?php
+                                endfor;
                             endif;
                             ?>
                         </header>
 
                         <!-- Post content-->
                         <section class="mb-5">
-                            <p class="fs-5 mb-4"><?=$item['content'] ?></p>
+                            <p class="fs-5 mb-4"><?=cutTheString($item['content']) ?> <a href="?idarticle=<?=$item['id'] ?>">... Lire la suite</a></p>
                         </section>
                     </article>
                     <?php
